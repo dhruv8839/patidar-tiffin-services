@@ -69,6 +69,12 @@ export default defineConfig({
     aliases(),
     layoutWrapperPlugin(),
   ],
+  build: {
+    target: "esnext",
+  },
+  esbuild: {
+    target: "esnext",
+  },
   resolve: {
     alias: {
       lodash: 'lodash-es',
