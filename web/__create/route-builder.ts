@@ -1,4 +1,5 @@
 import { readdir, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Hono } from 'hono';
@@ -16,6 +17,7 @@ if (globalThis.fetch) {
 
 // Recursively find all route.js files
 async function findRouteFiles(dir: string): Promise<string[]> {
+  if (!existsSync(dir)) return [];
   const files = await readdir(dir);
   let routes: string[] = [];
 
